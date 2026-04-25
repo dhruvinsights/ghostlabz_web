@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-brand-purple: var(--primary);
+  --color-brand-bg: var(--bg);
+  --color-brand-text: var(--text);
+  --color-brand-surface: var(--surface);
+  --color-brand-border: var(--border);
+  --color-brand-muted: var(--muted);
+}
+
+:root {
+  --primary: #9D7BFF;
+  --bg: #ffffff;
+  --text: #0f172a;
+  --surface: #f8fafc;
+  --border: #e2e8f0;
+  --muted: #64748b;
+  --accent: #f1f5f9;
+}
+
+[data-theme='dark'] {
+  --primary: #c084fc;
+  --bg: #0a0a0a;
+  --text: #f8fafc;
+  --surface: #141414;
+  --border: #2a2a2a;
+  --muted: #94a3b8;
+  --accent: #1e293b;
+}
+
+[data-theme='eye-care'] {
+  --primary: #9D7BFF;
+  --bg: #f8fafc;
+  --text: #0f172a;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --muted: #64748b;
+  --accent: #f1f5f9;
+}
+
+@layer base {
+  html, body {
+    @apply overflow-x-hidden;
+  }
+
+  body {
+    @apply bg-brand-bg text-brand-text font-sans antialiased transition-colors duration-300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+/* Reading Mode Utility */
+.reading-mode {
+  @apply max-w-3xl mx-auto text-lg leading-relaxed antialiased;
+}
+
+.reading-mode h2 { @apply text-3xl font-bold mt-12 mb-6; }
+.reading-mode p { @apply mb-6 text-brand-text/90; }
+
+.glass {
+  @apply bg-brand-surface/70 backdrop-blur-xl border border-brand-border shadow-sm;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-purple to-indigo-500;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
